@@ -13,4 +13,4 @@ class FeaturedBaseModel(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
-        managed = False
+        abstract = True
