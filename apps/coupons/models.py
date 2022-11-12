@@ -10,6 +10,7 @@ class Coupon(FeaturedBaseModel):
     capacity = models.PositiveIntegerField()
     used_by = models.PositiveIntegerField(default=0)
     expire_at = models.DateTimeField()
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.code
