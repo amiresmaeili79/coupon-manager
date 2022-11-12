@@ -8,7 +8,7 @@ class Coupon(FeaturedBaseModel):
     code = models.CharField(max_length=50, db_index=True)
     balance = models.PositiveBigIntegerField(default=0)
     capacity = models.PositiveIntegerField()
-    used_by = models.PositiveIntegerField()
+    used_by = models.PositiveIntegerField(default=0)
     expire_at = models.DateTimeField()
 
     def __str__(self):
@@ -27,3 +27,6 @@ class CouponUsage(FeaturedBaseModel):
     account = models.ForeignKey(
         Account, on_delete=models.SET_NULL, null=True
     )  # in case of account deletion, consistency of coupon capacity should be remained
+
+    class Meta:
+        db_table = "coupon_usage"
