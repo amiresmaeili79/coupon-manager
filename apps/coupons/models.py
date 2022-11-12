@@ -1,5 +1,6 @@
-from apps.shared.models import FeaturedBaseModel
 from django.db import models
+
+from apps.shared.models import FeaturedBaseModel
 
 
 class Coupon(FeaturedBaseModel):
