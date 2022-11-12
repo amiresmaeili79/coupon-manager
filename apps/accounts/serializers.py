@@ -33,3 +33,13 @@ class AccountDetailedSerializer(AccountsBasicSerializer):
             "is_staff",
             "is_superuser",
         )
+
+
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = (
+            "first_name",
+            "last_name",
+            "email",
+        )

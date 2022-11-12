@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,6 +12,7 @@ from .serializers import (
     LoginSerializer,
     AccountsBasicSerializer,
     AccountDetailedSerializer,
+    ProfileUpdateSerializer,
 )
 
 
@@ -33,6 +35,22 @@ class LoginView(APIView):
             )
 
         return Response(user.tokens, status=status.HTTP_200_OK)
+
+
+class Profile(RetrieveUpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
+
+    def get_serializer_class(self):
+        method_mapping = {
+            "GET": AccountDetailedSerializer,
+            "PATCH": ProfileUpdateSerializer,
+            "PUT": ProfileUpdateSerializer,
+        }
+
+        return method_mapping.get(self.request.method)
 
 
 class AccountViewSet(ReadOnlyModelViewSet):
