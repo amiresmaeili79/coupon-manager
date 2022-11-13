@@ -9,6 +9,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+TIME_ZONE = "Asia/Tehran"
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
