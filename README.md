@@ -50,3 +50,5 @@ then run
 ```shell
 sudo docker compose up --build -d
 ```
+
+The app is accessible through **localhost/**
