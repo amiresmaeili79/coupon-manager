@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  web_app:
+    build: .
+    ports:
+      - "8000:8000"
+    links:
+      - db
+
+  db:
+    image: postgres:13
+    env_file:
+      - .postgres.env
+    environment:
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
