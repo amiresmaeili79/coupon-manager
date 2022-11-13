@@ -38,3 +38,15 @@ Fire up a **Postgres** db then
 ```shell
 python ./manage.py runserver
 ```
+
+## Production Deployment
+
+Project is dockerized and can be fired up by **docker compose**.
+In order to have all the configurations, create
+* .env: for web app
+* .postgres.env: for postgres
+
+then run
+```shell
+sudo docker compose up --build -d
+```
