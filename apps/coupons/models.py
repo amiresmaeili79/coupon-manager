@@ -31,3 +31,4 @@ class CouponUsage(FeaturedBaseModel):
 
     class Meta:
         db_table = "coupon_usage"
+        unique_together = ("coupon", "account")
